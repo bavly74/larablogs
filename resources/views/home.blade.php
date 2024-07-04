@@ -3,10 +3,9 @@
 @section('content')
   <!-- Page Content -->
   <div class="container intro-container">
+  <global-home></global-home>
+    <!-- <div class="row">
 
-    <div class="row">
-
-      <!-- Blog Entries Column -->
       <div class="col-md-8">
 
         <h1 class="my-4">Page Heading
@@ -15,12 +14,10 @@
 
 
 
-        <!-- Blog Post -->
-        <global-home></global-home>
 
 
 
-        <!-- Pagination -->
+
         <nav aria-label="...">
           <ul class="pagination float-right">
             <li class="page-item disabled">
@@ -42,10 +39,8 @@
 
       </div>
 
-      <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
 
-        <!-- Search Widget -->
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">
@@ -58,7 +53,6 @@
           </div>
         </div>
 
-        <!-- Categories Widget -->
         <div class="card my-4">
           <h5 class="card-header">Categories</h5>
           <div class="card-body">
@@ -97,7 +91,7 @@
 
       </div>
 
-    </div>
+    </div> -->
     <!-- /.row -->
 
   </div>

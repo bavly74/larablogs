@@ -19,22 +19,24 @@ class PostController extends Controller
         return response()->json($posts);
     }
 
-    public function show($post){
-         $res=Post::where('slug',$post)->with('user','comments','category')->get();
-    //    return $res;
-        // return response()->json([
-        //     'id'=>$post->id,
-        //     'title'=>$post->title,
-        //     'slug'=>$post->slug,
-        //     'body'=>$post->body,
-        //     'added_at'=>$post->created_at->diffForHumans(),
-        //     'image'=>$post->image,
-        //     'user'=>$post->user,
-        //     'category'=>$post->category,
-        //     'comments'=>$this->formattedComments($post->comments)
-        // ]);
-         return response()->json($res);
+    public function show($post)
+    {
+        // Ensure the post exists
+        $res = Post::where('slug', $post)
+                ->with('user', 'comments.user', 'category')
+                ->first();
+
+                $res->setAttribute('added_at',$res->created_at->diffForHumans());
+                // $res->setAttribute('comments_count',$res->comments()->count());
+                //$res->formattedComments($res->comments);
+        // Check if the post was found
+        if (!$res) {
+            return response()->json(['message' => 'Post not found'], 404);
+        }
+
+        return response()->json($res);
     }
+
 
     public function formattedComments($comments){
         $newComments=[];
